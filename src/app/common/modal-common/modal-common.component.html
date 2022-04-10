@@ -1,0 +1,70 @@
+<div class="modal-container" [ngSwitch]="modalType">
+  <label class="title">{{ options.title }}</label>
+  <!-- Case Summary -->
+  <div class="container-summary" *ngSwitchCase="'Summary'">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <label class="title-product">Nombre Producto</label>
+          <br />
+          <label class="subtitle">{{ options.nameProduct }}</label>
+        </div>
+        <div class="col">
+          <label class="title-product">Detalle Producto</label>
+          <br />
+          <label class="subtitle">{{ options.detailProduct }}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Pay -->
+  <div class="modal-content" *ngSwitchCase="'Pay'">
+    <div class="modal-header">
+      <h5 class="modal-title">{{ options.title }}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <button type="button" class="btn btn-light button-option">
+      {{ options.payOption.cash }}
+    </button>
+    <button type="button" class="btn btn-light button-option">
+      {{ options.payOption.card }}
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      Cancelar
+    </button>
+    <button type="button" class="btn btn-primary" (click)="acceptPay()">Continuar</button>
+  </div>
+
+    <!-- <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{ options.title }}</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <button type="button" class="btn btn-light button-option">
+      {{ options.payOption.cash }}
+    </button>
+    <button type="button" class="btn btn-light button-option">
+      {{ options.payOption.card }}
+    </button>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Cancelar
+      </button>
+      <button type="button" class="btn btn-primary">Continuar</button>
+    </div> 
+  </div> -->
+</div>

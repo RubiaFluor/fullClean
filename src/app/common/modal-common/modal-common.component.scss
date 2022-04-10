@@ -1,0 +1,33 @@
+.modal-container {
+
+    .title{
+        font-size: 18px;
+        font-weight: 600;
+        justify-content: center;
+        display: flex;
+        margin: 30px;
+    }
+    .container-summary {
+        .container {
+            .title-product{
+                margin: 20px;
+                font-weight: 600;
+            }
+
+            .subtitle{
+                margin:20px;
+            }
+        }
+    }
+//   .modal-content {
+//     .button-option {
+//       width: 90%;
+//       margin: 20px;
+//       height: 90px;
+
+//       &:hover{
+//           background-color: orange;
+//       }
+//     }
+//   }
+}
