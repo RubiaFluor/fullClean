@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-modal-common',
@@ -10,16 +9,30 @@ import { Observable, Subscription } from 'rxjs';
 export class ModalCommonComponent implements OnInit {
   @Input() public options: any;
   @Input() public modalType: any;
+  @Input() public isVisible: boolean;
+  @Output() public action = new  EventEmitter<boolean>();
   constructor(public activeModal: NgbActiveModal) { 
-    
+    this.isVisible = false;
   }
 
   ngOnInit(): void {
-    console.log(this.options);
+console.log(this.options);
   }
 
-  public acceptPay(): void {
+  public acceptPay() {
   
+  }
+
+  public payCashOrCard(): void {
+    this.action.emit(true)
+  }
+
+  public cancelPay() {
+    this.activeModal.close()
+  }
+
+  public handleCancel(): void {
+    this.isVisible = false
   }
 
 }

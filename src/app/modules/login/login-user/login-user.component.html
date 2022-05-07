@@ -1,0 +1,27 @@
+<div class="container-login">
+    <form nz-form  [formGroup]="formLogin">
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <label>Login</label>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="login">Login Usuario</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="loginUser" id="loginUser" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="password">Contraseña</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input nz-input formControlName="password" id="password" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-row class="register-area">
+            <nz-form-control [nzSpan]="14" [nzOffset]="6">
+              <button nz-button nzType="primary" [nzSize]="'large'"
+              nzShape="round">Iniciar Sesion</button>
+            </nz-form-control>
+          </nz-form-item>
+    </form>
+</div>

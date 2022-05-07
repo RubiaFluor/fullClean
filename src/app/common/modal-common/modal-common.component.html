@@ -1,25 +1,24 @@
-<div class="modal-container" [ngSwitch]="modalType">
-  <label class="title">{{ options.title }}</label>
-  <!-- Case Summary -->
-  <div class="container-summary" *ngSwitchCase="'Summary'">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <label class="title-product">Nombre Producto</label>
-          <br />
-          <label class="subtitle">{{ options.nameProduct }}</label>
-        </div>
-        <div class="col">
-          <label class="title-product">Detalle Producto</label>
-          <br />
-          <label class="subtitle">{{ options.detailProduct }}</label>
-        </div>
+<div class="modal-container">
+  <nz-modal [(nzVisible)]="isVisible" nzTitle={{options}} (nzOnCancel)="handleCancel()">
+    <div *nzModalContent>
+      <div class="button-common">
+        <button   class="button-pay" nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="cancel()">
+          Tarjeta Credito o Debito
+         </button>
+      </div>
+      <div class="button-common">
+        <button  class="button-pay"  nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="cancel()">
+          Efectivo
+         </button>
       </div>
     </div>
-  </div>
-
+    <!-- <div *nzModalFooter>
+      <button nz-button nzType="default" (click)="handleCancel()"  nzShape="round" >Cancelar</button>
+      <button nz-button nzType="primary" (click)="handleOk()"  nzShape="round"  [nzLoading]="isConfirmLoading">Continuar</button>
+    </div> -->
+  </nz-modal>
   <!-- Case Pay -->
-  <div class="modal-content" *ngSwitchCase="'Pay'">
+  <!-- <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title">{{ options.title }}</h5>
       <button
@@ -29,19 +28,13 @@
         aria-label="Close"
       ></button>
     </div>
-    <button type="button" class="btn btn-light button-option">
-      {{ options.payOption.cash }}
+    <button type="button" class="btn btn-light button-option" (click)="payCashOrCard()">
+      Efectivo
     </button>
-    <button type="button" class="btn btn-light button-option">
-      {{ options.payOption.card }}
+    <button type="button" class="btn btn-light button-option" (click)="payCashOrCard()">
+      Tarjeta credito o debito
     </button>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-      Cancelar
-    </button>
-    <button type="button" class="btn btn-primary" (click)="acceptPay()">Continuar</button>
-  </div>
+  </div> -->
 
     <!-- <div class="modal-content">
     <div class="modal-header">

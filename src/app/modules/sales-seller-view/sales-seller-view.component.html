@@ -1,45 +1,105 @@
 <div class="container">
   <div class="row">
-    <input type="text" (change)="onKey($event)" autofocus  value="" min="1"/>
+    <input type="text" (change)="onKey($event)" autofocus value="" min="1" />
     <p>barcode: {{ barcode }}</p>
   </div>
   <div class="title">
     <span>Venta N° {{ 34555 }}</span>
   </div>
-  <div class="table-sales">
-    <table class="table" >
+  <div class="table-basic animated-fade-in">
+    <nz-table
+      #editRowTable
+      [nzData]="listData"
+      [nzShowPagination]="false"
+      [nzFrontPagination]="false"
+      [nzShowSizeChanger]="false"
+      [nzBordered]="false"
+      [nzSize]="'small'"
+      [nzFooter]="false"
+    >
       <thead>
         <tr>
-          <th scope="col">Codigo Producto</th>
-          <th scope="col">Nombre Producto</th>
-          <th scope="col">Precio Unitario</th>
-          <th scope="col">Cantidad</th>
+          <th>Codigo Producto</th>
+          <th>Nombre Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Acción</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of addProductScanner">
-        <tr>
-          <th scope="row">{{ item.codproduct }}</th>
-          <td>{{ item.nameproduct }}</td>
-          <td>{{ item.price }}</td>
-          <th><input type="number" class="form-control"  min="1"  value="1"  (input)="quantityProduct($event)"></th>
-          <!-- <input type="text"> -->
+      <tbody>
+        <tr *ngFor="let item of editRowTable.data">
+          <ng-container *ngIf="!editCache[item?.quantity].edit; else editTemplate">
+            <td>{{ item.code}}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }}</td>
+            <td><input type="text" nz-input [minLength]="1" value="1"/></td>
+            <td>
+              <nz-divider nzType="vertical"></nz-divider>
+              <a (click)="EditPrice(item.quantity)">Editar</a>
+            </td>
+          </ng-container>
+          <ng-template #editTemplate>
+            <td>{{ item.code }}</td>
+            <td>{{ item.name }} </td>
+            <td>{{ item.price }} </td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[item?.quantity].data.quantity" /></td>
+            <td>
+              <a (click)="saveEdit(item.data)" class="save">Guardar</a> <br>
+              <a nz-popconfirm nzPopconfirmTitle="Sure to cancel?" (nzOnConfirm)="cancelEdit(item.price)">Cancelar</a>
+            </td>
+          </ng-template>
         </tr>
       </tbody>
-    </table>
+    </nz-table>
+  </div>
+
+  <div class="notfoundProduct" *ngIf="notFoundProduct">
+    No se encontraron productos con el codigo {{barcode}} ingresado. Favor revisar codigo.
   </div>
 
   <div class="container-total">
     <div class="total">
-      <span>Total: {{ totalProductQty }}</span>
-     
+      <div nz-row [nzGutter]="4">
+        <div nz-col [nzSpan]="8">
+          <nz-card nzTitle="Total Venta">
+            <p>${{ totalPrice }}</p>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card nzTitle="Total IVA">
+            <p>${{ totalIVA }}</p>
+          </nz-card>
+        </div>
+        <div nz-col [nzSpan]="8">
+          <nz-card nzTitle="Total NETO">
+            <p>${{ totalNETO }}</p>
+          </nz-card>
+        </div>
+      </div>
     </div>
-    <div>
-      <span>Total Neto: {{ 9000 }}</span>
-    </div>
-
-    <div class="button float-right">
-      <button class="btn btn-secondary">Cancelar</button>
-      <button class="btn btn-primary" (click)="payProductsSummary()">Pagar</button>
-    </div>
+  </div>
+  <div class="button float-right">
+    <button
+      class="button-common"
+      nz-button
+      nzType="primary"
+      [nzSize]="'large'"
+      nzShape="round"
+      (click)="cancel()"
+    >
+      Cancelar
+    </button>
+    <button
+      class="button-common"
+      nz-button
+      nzType="primary"
+      [nzSize]="'large'"
+      nzShape="round"
+      [disabled]="isDisabled"
+      (click)="payProducts()"
+    >
+      <i nz-icon nzType="download"></i>
+      Pagar
+    </button>
   </div>
 </div>

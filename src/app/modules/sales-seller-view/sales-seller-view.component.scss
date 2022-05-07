@@ -1,3 +1,7 @@
+
+@import "~ng-zorro-antd/ng-zorro-antd.aliyun.css";
+
+
 .container {
   position: absolute;
   width: 78vw;
@@ -10,5 +14,34 @@
     font-size: 25px;
     font-weight: 600;
     padding: 20px;
+  }
+
+  .notfoundProduct{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .container-total{
+
+    .total {
+      background: #ECECEC;
+      padding:5px;
+      margin: 30px;
+    }
+  }
+
+  .button-common{
+    // padding: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  .table-sales {
+    table {
+      width: 100%;
+      margin: 20px;
+    }
+    
   }
 }

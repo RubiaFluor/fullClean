@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IFindProduct } from '../interfaces/sales-response';
 
 @Injectable({ providedIn: 'root' })
@@ -25,8 +25,12 @@ export class SalesViewService {
   }
 
   public getAllProducts(): Observable<any> {
-    return this.httpClient.get(this.baseUrl+'/Products/GetAllProducts')
+    return this.httpClient.get(this.baseUrl+'/Product/GetAllProduct')
     // const url = `${this.baseUrl}/products/getAllProducts`;
     // return this.httpClient.get(url, {headers});
+  }
+
+  public addSale(params:any) : Observable<any>{
+    return this.httpClient.post(this.baseUrl + '/SalesControllers/AddSales', params)
   }
 }

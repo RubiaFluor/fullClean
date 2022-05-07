@@ -1,9 +1,42 @@
 <div class="container">
-    <nav class="nav flex-column">
+  <!-- <nav class="nav flex-column">
         <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
         <a class="nav-link" routerLink="/sales-seller">Ventas</a>
         <a class="nav-link" href="#">Stock</a>
         <a class="nav-link" href="#">Reporte</a>
-        <a class="nav-link" href="#">Mantenedores</a>
-      </nav>
+        <a class="nav-link" routerLink="/maintainer-products">Mantenedores</a>
+      </nav> -->
+
+  <ul nz-menu [nzMode]="'vertical'">
+    <li nz-submenu nzTitle="Dashboard" nzIcon="appstore" routerLink=""></li>
+    <li
+      nz-submenu
+      nzTitle="Ventas"
+      nzIcon="appstore"
+      routerLink="/sales-seller"
+    ></li>
+    <li nz-submenu nzTitle="Stock" nzIcon="appstore" routerLink="  ">
+      <ul>
+        <li nz-menu-item>Stock Local</li>
+        <li nz-menu-item>Stock Bodega</li>
+      </ul>
+    </li>
+    <li nz-submenu nzTitle="Reportes" nzIcon="appstore" routerLink="  ">
+      <ul>
+        <li nz-menu-item>Total Ventas</li>
+        <li nz-menu-item>Productos más Vendidos</li>
+        <li nz-menu-item>Meses con mayor y menor venta</li>
+        <li nz-menu-item>Productos vs Cantidad</li>
+        <li nz-menu-item>Metodos de pago</li>
+      </ul>
+    </li>
+    <li nz-submenu nzTitle="Mantenedores" nzIcon="appstore" routerLink="  ">
+      <ul>
+        <li nz-menu-item routerLink="/maintainer/maintainer-user">Usuarios</li>
+        <li nz-menu-item>Productos</li>
+        <li nz-menu-item>Stock Local</li>
+        <li nz-menu-item>Stock Bodega</li>
+      </ul>
+    </li>
+  </ul>
 </div>

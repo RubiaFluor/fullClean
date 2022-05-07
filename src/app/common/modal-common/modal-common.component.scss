@@ -1,33 +1,19 @@
 .modal-container {
+  .ant-
+  .button-common {
+    padding: 20px !important;
+     .button-pay{
+        height: 100px !important;
+        width: 100% !important;
+     }
+  }
+}
 
-    .title{
-        font-size: 18px;
-        font-weight: 600;
-        justify-content: center;
-        display: flex;
-        margin: 30px;
-    }
-    .container-summary {
-        .container {
-            .title-product{
-                margin: 20px;
-                font-weight: 600;
-            }
-
-            .subtitle{
-                margin:20px;
-            }
-        }
-    }
-//   .modal-content {
-//     .button-option {
-//       width: 90%;
-//       margin: 20px;
-//       height: 90px;
-
-//       &:hover{
-//           background-color: orange;
-//       }
-//     }
-//   }
+.ant-btn-round.ant-btn-lg {
+    height: 100px;
+    padding: 0px;
+    font-size: 16px;
+    border-radius: 40px;
+    width: 100%;
+    margin: 3px;
 }
